@@ -3,15 +3,18 @@ import base64
 import os
 
 
-URL = "https://hq.qashier.com/#/login"
-URL_CUST_MAGEMENT = "https://hq.qashier.com/#/customer-management"
-DOWNLOAD_FOLDER = "/tmp/browserdownload"
+URL = os.getenv("URL", "https://hq.qashier.com/#/login")    
+URL_CUST_MAGEMENT = os.getenv("URL_CUST_MAGEMENT", "https://hq.qashier.com/#/customer-management") 
+DOWNLOAD_FOLDER = os.getenv("FILE_NAME_PREFIX", "/tmp/browserdownload")   
 HEADLESS = True 
+
 PATH_TO_GOOGLE_KEY = "/tmp/service_account.json" 
-DRIVE_FOLDER_ID = "1gJJn48WyvrYWjq7pcZ1qGZDNQsDYjMME"
-FILE_NAME_PREFIX = "CustomerManagement"
 SCREENSHOT_FOLDER = "/tmp/browserscreenshots"
-DEBUG = True
+
+DRIVE_FOLDER_ID = os.getenv("DRIVE_FOLDER_ID", "1gJJn48WyvrYWjq7pcZ1qGZDNQsDYjMME") 
+FILE_NAME_PREFIX = os.getenv("FILE_NAME_PREFIX", "CustomerManagement")  
+
+DEBUG = os.getenv("DEBUG", False)
 
 try:
     if not ( "LOGIN" in os.environ and "PASSWORD" in os.environ and "GOOGLE_KEY" in os.environ):
